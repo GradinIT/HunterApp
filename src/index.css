@@ -1,0 +1,138 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  background-color: #2c3e50;
+  color: #fefaf1;
+  padding: 20px;
+  text-align: center;
+}
+
+.tab {
+  padding: 15px 20px;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  transition: background-color 0.3s;
+  background-color: #333;
+  color: #fefaf1;
+}
+
+.tab:hover {
+  background-color: #526068;
+}
+
+.tab.active {
+  background-color: #fefaf1;
+  color: #000000;
+  font-weight: bold;
+}
+
+.content {
+  background-color: #fefaf1;
+  color: #000000;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+}
+
+
+
+.navbar button.tab {
+  float: left;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  border-radius: 0;
+  border: none;
+}
+
+.navbar button.tab.active {
+  background-color: #fefaf1;
+  color: #000000;
+}
+
+.navbar .icon {
+  background-color: #2c3e50;
+  display: none;
+  padding: 6px;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar button.tab:not(.active) {
+    display: none;
+  }
+  .navbar button.tab.active {
+    display: block;
+    float: left;
+  }
+  .navbar button.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar.responsive {position: relative;}
+  .navbar.responsive button.icon {
+    position: relative;
+    margin-left: auto;
+  }
+  .navbar.responsive button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: max-content;
+  }
+
+  .navbar.responsive button.tab {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.list-container {
+  margin-top: 20px;
+}
