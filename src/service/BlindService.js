@@ -2,12 +2,15 @@ import { CONFIG } from "../config.js";
 
 export class BlindService {
     async getBlinds() {
-        return fetch(`${CONFIG.BASE_URL}/blinds`).then(response => response.json());
+        return fetch(`${CONFIG.BASE_URL}/blinds`, {
+            credentials: 'include',
+        }).then(response => response.json());
     }
 
     async createBlind(blind) {
         return fetch(`${CONFIG.BASE_URL}/blind`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -18,12 +21,14 @@ export class BlindService {
     async deleteBlind(id) {
         return fetch(`${CONFIG.BASE_URL}/blind/${id}`, {
             method: 'DELETE',
+            credentials: 'include',
         });
     }
 
     async updateBlind(id, blind) {
         return fetch(`${CONFIG.BASE_URL}/blind/${id}`, {
             method: 'PUT',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },

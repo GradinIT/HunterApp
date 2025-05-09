@@ -6,12 +6,15 @@ export class ObservationService {
     }
 
     async getObservations() {
-        return fetch(`${this.baseUrl}/observations`).then(response => response.json());
+        return fetch(`${this.baseUrl}/observations`, {
+            credentials: 'include',
+        }).then(response => response.json());
     }
 
     async createObservation(observation) {
         return fetch(`${this.baseUrl}/observation`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -22,12 +25,14 @@ export class ObservationService {
     async deleteObservation(id) {
         return fetch(`${this.baseUrl}/observation/${id}`, {
             method: 'DELETE',
+            credentials: 'include',
         });
     }
 
     async updateObservation(id, observation) {
         return fetch(`${this.baseUrl}/observation/${id}`, {
             method: 'PUT',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
