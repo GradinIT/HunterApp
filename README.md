@@ -24,6 +24,7 @@ To get started, clone the repository, install the dependencies and then run the 
 npm install
 npm run dev
 ```
+Set the proxy in [vite.config.js](vite.config.js) to point to your backend API.
 
 ### Configuration
 The application connects to a backend API. You can set the api base URL in [src/config.js](src/config.js)

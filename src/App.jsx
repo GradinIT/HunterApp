@@ -1,14 +1,18 @@
-import { useState } from 'react'
+import {useContext, useState} from 'react'
 import AreaView from './views/Area.jsx'
 import HunterView from './views/Hunter.jsx'
 import BlindView from "./views/Blind.jsx";
 import ReportView from "./views/Report.jsx";
 import ObservationView from "./views/Observation.jsx";
 import LotteryView from "./views/Lottery.jsx";
+import LoginView from "./views/Login.jsx";
+import {AuthContext} from "./AuthContext.jsx";
+import {CONFIG} from "./config.js";
 
 function App() {
     const [currentView, setCurrentView] = useState('areas')
     const [menuExpanded, setMenuExpanded] = useState(false)
+    const {authenticated, logout} = useContext(AuthContext)
 
     const toggleMenu = () => {
         setMenuExpanded(!menuExpanded)
@@ -20,6 +24,9 @@ function App() {
     }
 
     const renderView = () => {
+        if (!authenticated) {
+            return <LoginView />
+        }
         switch (currentView) {
             case 'areas':
                 return <AreaView />
@@ -43,7 +50,8 @@ function App() {
             <div className="header">
                 <h1>Jakt Å Sånt</h1>
             </div>
-            <nav className={`navbar menu-toggle ${menuExpanded ? 'responsive' : ''}`} id="mobile-menu">
+            <nav className={`navbar menu-toggle ${menuExpanded ? 'responsive' : ''}`} id="mobile-menu"
+                 style={{display: authenticated ? 'block' : 'none'}}>
                 <button className="icon"
                         onClick={toggleMenu}>
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none"
@@ -77,6 +85,10 @@ function App() {
                     onClick={()  => handleTabClick('lottery')}
                     className={`tab ${currentView === 'lottery' ? 'active' : ''}`}>
                     Lottning</button>
+                <button
+                    onClick={() => logout()}
+                    className="tab">
+                    Logga ut</button>
             </nav>
             <div className="content">
                 {renderView()}

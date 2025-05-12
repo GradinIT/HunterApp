@@ -2,12 +2,15 @@ import { CONFIG } from "../config.js";
 
 export class ReportService {
     async getReports() {
-        return fetch(`${CONFIG.BASE_URL}/reports`).then(response => response.json());
+        return fetch(`${CONFIG.BASE_URL}/reports`, {
+            credentials: 'include',
+        }).then(response => response.json());
     }
 
     async createReport(report) {
         return fetch(`${CONFIG.BASE_URL}/report`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -18,12 +21,14 @@ export class ReportService {
     async deleteReport(id) {
         return fetch(`${CONFIG.BASE_URL}/report/${id}`, {
             method: 'DELETE',
+            credentials: 'include',
         });
     }
 
     async updateReport(id, report) {
         return fetch(`${CONFIG.BASE_URL}/report/${id}`, {
             method: 'PUT',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -34,6 +39,7 @@ export class ReportService {
     async notifyManagers() {
         return fetch(`${CONFIG.BASE_URL}/report/notify`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },

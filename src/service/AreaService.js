@@ -2,12 +2,15 @@ import { CONFIG } from "../config.js";
 
 export class AreaService {
     async getAreas() {
-        return fetch(`${CONFIG.BASE_URL}/area`).then(response => response.json());
+        return fetch(`${CONFIG.BASE_URL}/area`, {
+            credentials: 'include'
+        }).then(response => response.json());
     }
 
     async createArea(area) {
         return fetch(`${CONFIG.BASE_URL}/area`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -18,12 +21,14 @@ export class AreaService {
     async deleteArea(id) {
         return fetch(`${CONFIG.BASE_URL}/area/${id}`, {
             method: 'DELETE',
+            credentials: 'include',
         });
     }
 
     async updateArea(id, area) {
         return fetch(`${CONFIG.BASE_URL}/area/${id}`, {
             method: 'PUT',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
